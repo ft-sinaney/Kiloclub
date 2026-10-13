@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #060607;
+  --color-ink-900: #0c0c0e;
+  --color-ink-850: #111114;
+  --color-ink-800: #17171b;
+  --color-ink-750: #1d1d22;
+  --color-ink-700: #26262c;
+  --color-ink-600: #36363e;
+  --color-ink-500: #55555f;
+  --color-ink-400: #8a8a95;
+  --color-ink-300: #b3b3bc;
+  --color-ink-200: #d6d6dc;
+
+  --color-gold-100: #fff3cf;
+  --color-gold-200: #fbe3a0;
+  --color-gold-300: #f6cf62;
+  --color-gold-400: #efb935;
+  --color-gold-500: #d99d1c;
+  --color-gold-600: #b37d10;
+  --color-gold-700: #845a0a;
+  --color-gold-800: #5a3d07;
+
+  --color-whatsapp: #25d366;
+
+  --font-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-ink-950);
+}
+
+body {
+  background: var(--color-ink-950);
+  color: var(--color-ink-200);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@utility text-gold {
+  background: linear-gradient(180deg, #fff1c4 0%, #f6cf62 30%, #d99d1c 62%, #9c6a0d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-gold {
+  background: linear-gradient(180deg, #f9dc80 0%, #efb935 45%, #c98d15 100%);
+}
+
+@utility border-gold-soft {
+  border-color: color-mix(in oklab, var(--color-gold-500) 35%, transparent);
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-gold {
+  @apply btn bg-gold text-ink-950 shadow-[0_6px_24px_-8px_rgba(239,185,53,0.55)] hover:brightness-110;
+}
+@utility btn-outline {
+  @apply btn border border-ink-600 bg-ink-850 text-ink-200 hover:border-gold-500 hover:text-gold-300;
+}
+@utility btn-whatsapp {
+  @apply btn bg-whatsapp text-ink-950 hover:brightness-110;
+}
+@utility card {
+  @apply rounded-2xl border border-ink-700 bg-ink-850;
+}
+@utility input {
+  @apply w-full rounded-lg border border-ink-600 bg-ink-900 px-3.5 py-2.5 text-sm text-ink-200 placeholder:text-ink-500 outline-none transition focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20;
+}
+@utility chip {
+  @apply rounded-full border border-ink-600 px-4 py-1.5 text-xs font-medium text-ink-300 transition hover:border-gold-500 hover:text-gold-300;
+}
+@utility chip-active {
+  @apply border-gold-400 bg-gold-400 text-ink-950 hover:text-ink-950;
+}
+@utility section-title {
+  @apply font-display text-2xl tracking-wide text-white uppercase sm:text-3xl;
+}
+
+.hero-glow {
+  background:
+    radial-gradient(60% 60% at 70% 45%, rgba(239, 185, 53, 0.22) 0%, rgba(239, 185, 53, 0) 70%),
+    radial-gradient(40% 50% at 15% 80%, rgba(217, 157, 28, 0.08) 0%, rgba(217, 157, 28, 0) 70%);
+}
+
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float { animation: none; }
+}

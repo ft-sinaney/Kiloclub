@@ -1,0 +1,12 @@
+{
+  "name": "kiloclub",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev:store": "npm run dev -w store",
+    "dev:admin": "npm run dev -w admin",
+    "build": "npm run build -w store && npm run build -w admin",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}
