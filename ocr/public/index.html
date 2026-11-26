@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Read My Writing</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Read my writing</h1>
+      <p class="lede">Take a photo or choose an image. The text comes out ready to copy.</p>
+    </header>
+
+    <section class="card" aria-labelledby="step1">
+      <h2 id="step1">1. Add an image</h2>
+      <div class="actions">
+        <button id="cameraBtn" type="button" class="primary">Open camera</button>
+        <button id="uploadBtn" type="button">Choose image</button>
+        <input id="fileInput" type="file" accept="image/*" hidden>
+      </div>
+      <p class="hint">You can also drop an image here or paste one with Ctrl/⌘+V.</p>
+
+      <div id="cameraPanel" hidden>
+        <div class="video-wrap">
+          <video id="video" playsinline muted></video>
+        </div>
+        <div class="actions">
+          <button id="captureBtn" type="button" class="primary">Take photo</button>
+          <button id="switchBtn" type="button">Switch camera</button>
+          <button id="closeCameraBtn" type="button">Close camera</button>
+        </div>
+      </div>
+
+      <div id="preview" hidden>
+        <img id="previewImg" alt="The image that will be read">
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="step2">
+      <h2 id="step2">2. Read it</h2>
+      <fieldset>
+        <legend>Reading method</legend>
+        <label class="radio">
+          <input type="radio" name="engine" value="claude">
+          <span><strong>Handwriting</strong> <span id="claudeNote" class="muted"></span></span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="engine" value="tesseract">
+          <span><strong>Printed text, offline</strong> <span class="muted">Runs in your browser. Weak on handwriting.</span></span>
+        </label>
+      </fieldset>
+      <div class="actions">
+        <button id="readBtn" type="button" class="primary" disabled>Read text</button>
+      </div>
+      <div id="status" role="status" aria-live="polite" hidden>
+        <div class="bar"><div id="barFill"></div></div>
+        <p id="statusText"></p>
+      </div>
+      <p id="error" class="error" role="alert" hidden></p>
+    </section>
+
+    <section class="card" id="resultCard" aria-labelledby="step3" hidden>
+      <h2 id="step3">3. Your text</h2>
+      <label for="result" class="sr-only">Extracted text (you can edit it)</label>
+      <textarea id="result" rows="10" spellcheck="false"></textarea>
+      <div class="actions">
+        <button id="copyBtn" type="button" class="primary">Copy text</button>
+        <button id="downloadBtn" type="button">Download .txt</button>
+        <button id="clearBtn" type="button">Start over</button>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="work" hidden></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

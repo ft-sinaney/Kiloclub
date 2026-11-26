@@ -1,0 +1,11 @@
+{
+  "name": "kiloclub-ocr",
+  "private": true,
+  "type": "module",
+  "description": "Read handwriting and printed text from a camera or an image.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=20" }
+}
